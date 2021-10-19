@@ -297,7 +297,6 @@ var divide = function(x, y) {
   if (x >= y) {
    x = x - y;
    count++
-   console.log(x, y, count)
   }
     count += divide(x, y);
     if ( neg) {
@@ -312,6 +311,19 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+  if ( x < 0 || y < 0) {
+    return null;
+  }
+  if (x === 0 && y > 0) {
+    return y;
+  }
+  if (y === 0 && x > 0) {
+    return x;
+  }
+  var r = x % y;
+  var q  = Math.floor(x/y);
+  return gcd(y, r)
+
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
